@@ -12,9 +12,11 @@
 <p><%= @article.body %></p>
 <br />
 
-<%= link_to "edit", edit_article_path(@article) %>
-<%= link_to "delete", article_path(@article), 
-method: :delete, data: {confirm: "Really delete the article?"} %>
+<% if logged_in? %>
+  <%= link_to "edit", edit_article_path(@article) %>
+  <%= link_to "delete", article_path(@article), 
+      method: :delete, data: {confirm: "Really delete the article?"} %>
+<% end %>
 <br />
 
 <h3>Comments (<%= @article.comments.count %>) </h3>
